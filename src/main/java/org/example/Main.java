@@ -23,7 +23,6 @@ public class Main {
             list.add(random.nextInt(max));
         }
 
-
         List<Integer> collectedList = list.stream()
                 .filter(x -> x % 2 == 0)
                 .map(x -> x * 2)
@@ -40,6 +39,7 @@ public class Main {
 
         // LISTE AUS EINER DATEI ERSTELLEN
         Path csvPath = Path.of("src", "main", "resources", "students.csv");
+
         try (Stream<String> lines = Files.lines(csvPath)) {
             List<Student> students = lines
                     .skip(1) // Header entfernen
@@ -59,7 +59,6 @@ public class Main {
                     .filter(Objects::nonNull) // nimm nur die nicht nuller
                     .distinct()
                     .toList(); // packe bzw. gebe die neuen Studenten in eine Liste (zurück)
-
 
             students.forEach(System.out::println); // printe die neuen Studenten in die Konsole
 
